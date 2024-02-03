@@ -37,7 +37,6 @@ export const AddTodo = (props: Props) => {
     props.setTodos(newTodos);
     taskText.current.value = "";
   };
-
   return (
     <>
       <div>
