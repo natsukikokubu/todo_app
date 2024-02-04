@@ -1,25 +1,10 @@
 import { useRef } from "react";
+import { Todo } from "../domains/todo";
 
 type Props = {
-  todos: {
-    id: number;
-    task: string;
-    completed: boolean;
-  }[];
-  setTodos: (
-    todo: {
-      id: number;
-      task: string;
-      completed: boolean;
-    }[]
-  ) => void;
+  todos: Todo[];
+  setTodos: (todo: Todo[]) => void;
 };
-
-type Todos = {
-  id: number;
-  task: string;
-  completed: boolean;
-}[];
 
 export const AddTodo = (props: Props) => {
   const taskText = useRef<HTMLInputElement>(null);
@@ -33,7 +18,7 @@ export const AddTodo = (props: Props) => {
     } else {
       todo.id = props.todos.length + 1;
     }
-    const newTodos: Todos = [...props.todos, todo];
+    const newTodos: Todo[] = [...props.todos, todo];
     props.setTodos(newTodos);
     taskText.current.value = "";
   };

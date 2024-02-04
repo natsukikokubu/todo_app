@@ -1,19 +1,9 @@
-import React from "react";
-import { Todo } from "./Todo";
+import { ToggleTodo } from "./Todo";
+import { Todo } from "../domains/todo";
 
 type Props = {
-  todos: {
-    id: number;
-    task: string;
-    completed: boolean;
-  }[];
-  setTodos: (
-    todo: {
-      id: number;
-      task: string;
-      completed: boolean;
-    }[]
-  ) => void;
+  todos: Todo[];
+  setTodos: (todo: Todo[]) => void;
 };
 
 export const TodoList = (props: Props) => {
@@ -22,7 +12,11 @@ export const TodoList = (props: Props) => {
       {props.todos.map((todo) => {
         return (
           <div key={todo.id}>
-            <Todo todo={todo} todos={props.todos} setTodos={props.setTodos} />
+            <ToggleTodo
+              todo={todo}
+              todos={props.todos}
+              setTodos={props.setTodos}
+            />
           </div>
         );
       })}

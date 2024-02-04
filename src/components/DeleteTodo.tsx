@@ -1,35 +1,21 @@
-import React from "react";
+import { Todo } from "../domains/todo";
 
 type Props = {
-  todos: {
-    id: number;
-    task: string;
-    completed: boolean;
-  }[];
-  setTodos: (
-    todo: {
-      id: number;
-      task: string;
-      completed: boolean;
-    }[]
-  ) => void;
+  todos: Todo[];
+  setTodos: (todos: Todo[]) => void;
 };
-
-type Todos = {
-  id: number;
-  task: string;
-  completed: boolean;
-}[];
 
 export const DeleteTodo = (props: Props) => {
   const deleteTodo = () => {
-    const newtodos: Todos = props.todos.filter((todo) => !todo.completed);
+    const inProgressTodos: Todo[] = props.todos.filter(
+      (todo) => !todo.completed
+    );
     let idCount = 1;
-    newtodos.forEach((todo) => {
+    inProgressTodos.forEach((todo) => {
       todo.id = idCount;
       idCount++;
     });
-    props.setTodos(newtodos);
+    props.setTodos(inProgressTodos);
   };
   return (
     <>

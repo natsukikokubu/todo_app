@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AddTodo } from "./components/AddTodo";
 import { TodoList } from "./components/TodoList";
 import { DeleteTodo } from "./components/DeleteTodo";
-
-type Todo = {
-  id: number;
-  task: string;
-  completed: boolean;
-};
+import { Todo } from "./domains/todo";
 
 export function App() {
   const [todos, setTodos] = useState<Todo[]>([]);

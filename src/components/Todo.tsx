@@ -1,34 +1,14 @@
-import React from "react";
+import { Todo } from "../domains/todo";
 
 type Props = {
-  todo: {
-    id: number;
-    task: string;
-    completed: boolean;
-  };
-  todos: {
-    id: number;
-    task: string;
-    completed: boolean;
-  }[];
-  setTodos: (
-    todo: {
-      id: number;
-      task: string;
-      completed: boolean;
-    }[]
-  ) => void;
+  todo: Todo;
+  todos: Todo[];
+  setTodos: (todo: Todo[]) => void;
 };
 
-type Todos = {
-  id: number;
-  task: string;
-  completed: boolean;
-}[];
-
-export const Todo = (props: Props) => {
+export const ToggleTodo = (props: Props) => {
   const toggleTodo = () => {
-    const newtodos: Todos = props.todos.map((todo) => {
+    const newtodos: Todo[] = props.todos.map((todo) => {
       if (todo.id === props.todo.id) {
         todo.completed = !todo.completed;
       }
